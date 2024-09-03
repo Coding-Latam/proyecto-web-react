@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { useFetch } from "../../hooks";
 import logo from "../../assets/images/logo/logo.png";
-import { NAV_ITEMS } from "../../utils/constants";
+import { INavItem } from "../../types/navItem";
 
 export function Nav() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const { data } = useFetch("nav-items");
 
   return (
     <nav className="py-5 px-0">
@@ -17,7 +20,7 @@ export function Nav() {
           Menu
         </span>
         <ul className={isOpen ? "active" : `hidden md:flex`}>
-          {NAV_ITEMS.map((item) => (
+          {data.map((item: INavItem) => (
             <li key={item.id}>
               <a
                 className="text-white md:text-paragraph-color"
