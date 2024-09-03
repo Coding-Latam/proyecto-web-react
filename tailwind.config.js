@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./src/**/*.{ts,tsx,html}",
+    "./node_modules/latamcomponents/dist/**/*.js",
+  ],
   safelist: ["justify-self-center"],
   theme: {
     extend: {
